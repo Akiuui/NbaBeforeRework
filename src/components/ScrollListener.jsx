@@ -1,34 +1,34 @@
 import { useEffect } from 'react'
-import saveGames from '../controllers/saveGames'
 
-export default function ScrollListener({date, firstFetch,/* setFirstFetch,*/ cursor, setCursor, setGames}) {
+export default function ScrollListener({action, setCursor, nextCursor}) {
+    console.log("mount")
+
     useEffect(() => {
-        if (!date) return
 
-        let lastCursor
+        // if (!date) return
+
         const handleScroll = () => {
-
             const scrollPosition = window.innerHeight + window.scrollY; // Visible height + scrolled distance
             const pageHeight = document.documentElement.offsetHeight; // Total height of the page
 
-            if (scrollPosition >= pageHeight - 10) {
-
-                if(cursor != lastCursor){ //We dont allow multiple firings of the function, we allow it only when the cursor is changed
-                    saveGames(date, false, cursor, setCursor, setGames)
-                    lastCursor = cursor
-                }
+            if (scrollPosition >= pageHeight - 30) {
+                console.log("function ran")
+                action(setCursor, nextCursor)
                 
             }
 
         }
 
         window.addEventListener('scroll', handleScroll)
+        return () => 
+        {
+            window.removeEventListener('scroll', handleScroll)
+            console.log("unmount")
 
-        return () => {window.removeEventListener('scroll', handleScroll)
         }
 
 
-    }, [date, firstFetch, cursor, setCursor, setGames])
+    }, [nextCursor])
 
     return null
 

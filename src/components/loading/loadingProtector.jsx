@@ -19,7 +19,7 @@ function LoadingProtector() {
         };
     }, []);
 
-    return <div className="w-screen h-screen absolute bg-gray-400/90 z-50 flex justify-center items-center">
+    return <div className="w-screen h-screen absolute top-0 bg-gray-200/40 z-50 flex justify-center items-center">
 
         <LoadingCircle />
 

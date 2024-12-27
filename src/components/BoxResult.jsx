@@ -29,7 +29,7 @@ function BoxResult({ game, date }) {
     useEffect(() => {
         
         if(homeTeam.logoState == "notFetched"){
-            homeTeam.fetchLogo(year)
+            homeTeam.FetchLogo(year)
                 .then(() => setHomeLogo(homeTeam.logo))
         }
 
@@ -37,7 +37,7 @@ function BoxResult({ game, date }) {
     useEffect(() => {
 
         if(visitorTeam.logoState == "notFetched"){
-            visitorTeam.fetchLogo(year)
+            visitorTeam.FetchLogo(year)
                 .then(() => setvisitorLogo(visitorTeam.logo))
         }
 

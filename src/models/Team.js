@@ -1,6 +1,7 @@
 import axios from "axios"
 import placeholderLogo from "../../public/placeholderLogo.js"
 import TeamsColor from "../utils/teamsColor.js"
+import fetchLogo from "../routes/fetchLogo.js"
 
 class Team{
 
@@ -13,10 +14,11 @@ class Team{
         this.logoState = "notFetched"
     }
 
-    async fetchLogo(year){
+    async FetchLogo(year){
 
         try{
-            const res = await axios.get(`https://nbalogosapi-1.onrender.com/nbalogos?teamName=${this.name}&teamYear=${year}`)
+            let res = await fetchLogo({name: this.name, year: year})
+            // const res = await axios.get(`https://nbalogosapi-1.onrender.com/nbalogos?teamName=${this.name}&teamYear=${year}`)
             this.logo = res.data[0].Base64String
             this.logoState = "fetched"
         }catch(error){
