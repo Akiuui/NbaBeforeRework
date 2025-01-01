@@ -29,13 +29,12 @@ function FetchGames({setGames, date}) {
     useEffect(() => {
         
         const fetchData = async () => {
-            // if(!date) return
+            if(!date) return
             console.log("fetchuje se")
             setLoading(true)
 
             try{
                 let res = await fetchGames({cursor: cursor, date: date})
-                console.log(res)
 
                 setFirstFetch(false)
                 setNextCursor(res.data.meta.next_cursor/*res.data.meta.next_cursor != undefined*/)

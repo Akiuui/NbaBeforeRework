@@ -9,10 +9,6 @@ function  App() {
   const [date, setDate] = useState(() => {return "2023-02-06"})
   const [isPlayoff, setIsPlayoff] = useState(false)
   const [isOffseason, setisOffseason] = useState(false)
-  
-  // const [dataFetched, setDataFetched] = useState(false)
-  // const [loading, setLoading] = useState(true)
-  // const [stateOfFetch, setStateOfFetch] = useState("first")
 
   const [games, setGames] = useState([])
 
